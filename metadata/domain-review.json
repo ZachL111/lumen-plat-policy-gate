@@ -1,0 +1,73 @@
+{
+  "repo": "lumen-plat-policy-gate",
+  "language": "Java",
+  "category": "Platform engineering",
+  "goal": "Package a Java local lab for policy analysis with seeded input scenarios, deterministic summary checks, and documented operating limits.",
+  "review_model": {
+    "terms": [
+      "rollout width",
+      "quota pressure",
+      "route drift",
+      "secret scope"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "rollout width",
+      "signal": 44,
+      "slack": 21,
+      "drag": 10,
+      "confidence": 92,
+      "score": 171,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "quota pressure",
+      "signal": 64,
+      "slack": 28,
+      "drag": 28,
+      "confidence": 56,
+      "score": 128,
+      "lane": "watch"
+    },
+    {
+      "name": "edge",
+      "focus": "route drift",
+      "signal": 53,
+      "slack": 40,
+      "drag": 23,
+      "confidence": 85,
+      "score": 162,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "secret scope",
+      "signal": 85,
+      "slack": 21,
+      "drag": 9,
+      "confidence": 55,
+      "score": 219,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "rollout width",
+      "signal": 92,
+      "slack": 41,
+      "drag": 31,
+      "confidence": 47,
+      "score": 179,
+      "lane": "ship"
+    }
+  ]
+}
